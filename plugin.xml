@@ -3,8 +3,8 @@
     <description>A Cordova plugin for Android that allows users to convert speech to text.</description>
     <license>MIT</license>
     <keywords>cordova,android,speech,text</keywords>
-    <repo>https://github.com/your_repository_here</repo>
-    <issue>https://github.com/your_issues_url_here</issue>
+    <repo>https://github.com/lanciaDemente/cordova-voice-to-text</repo>
+    <issue>https://github.com/lanciaDemente/cordova-voice-to-text/issues</issue>
     <engines>
 	<engine name="cordova" version=">=3.0.0"/>
     </engines>
