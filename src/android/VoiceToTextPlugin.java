@@ -1,4 +1,5 @@
-package com.test.cordova.plugin;
+package com.lanciademente.voicetotext;
+//package com.test.cordova.plugin;
 
 import android.app.Activity;
 import android.content.ComponentName;
