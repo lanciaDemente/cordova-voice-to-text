@@ -1,0 +1,33 @@
+{
+    "name": "cordova-plugin-voicetotext",
+    "version": "0.0.1",
+    "description": "A Cordova plugin for Android that allows users to convert speech to text.",
+    "cordova": {
+      "id": "cordova-plugin-voicetotext",
+      "platforms": [
+        "android"
+      ]
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/your_repository_here"
+    },
+    "keywords": [
+      "speech",
+      "text",
+      "ecosystem:cordova",
+      "cordova-android"
+    ],
+    "engines": [
+      {
+        "name": "cordova",
+        "version": ">=3.0.0"
+      }
+    ],
+    "author": "Simone Nocera",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/your_github_issues_url"
+    },
+    "homepage": "https://your_homepage"
+  }

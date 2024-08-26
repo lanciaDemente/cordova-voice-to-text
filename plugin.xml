@@ -1,0 +1,24 @@
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-voicetotext" version="0.0.1">
+    <name>VoiceToTextPlugin</name>
+    <description>A Cordova plugin for Android that allows users to convert speech to text.</description>
+    <license>MIT</license>
+    <keywords>cordova,android,speech,text</keywords>
+    <repo>https://github.com/your_repository_here</repo>
+    <issue>https://github.com/your_issues_url_here</issue>
+    <engines>
+	<engine name="cordova" version=">=3.0.0"/>
+    </engines>
+
+    <js-module src="www/voiceToTextPlugin.js" name="voiceToTextPlugin">
+	    <clobbers target="window.plugins.voiceToTextPlugin" />
+    </js-module>
+
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="VoiceToTextPlugin">
+                <param name="android-package" value="com.lanciademente.VoiceToTextPlugin"/>
+            </feature>
+        </config-file>
+	    <source-file src="src/android/VoiceToTextPlugin.java" target-dir="src/com/lanciademente/voicetotext" />
+    </platform>
+</plugin>
