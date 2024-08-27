@@ -1,5 +1,4 @@
 package com.lanciademente.voicetotext;
-//package com.test.cordova.plugin;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -64,8 +63,12 @@ public class VoiceToTextPlugin extends CordovaPlugin implements RecognitionListe
 
   @Override
   public boolean execute(String action, JSONArray args, CallbackContext callback) throws JSONException {
+    if (IS_RECOGNIZING.equals(action)) {
+      callback.success(isRecognizing ? 1 : 0);
+      return true;
+    }
+
     this.callbackContext = callback;
-    
     String errorMessage = "Method not found";
 
     try {
@@ -81,11 +84,6 @@ public class VoiceToTextPlugin extends CordovaPlugin implements RecognitionListe
 
       if (REQUEST_MIC_PERMISSION.equals(action)) {
         requestMicPermission();
-        return true;
-      }
-
-      if (IS_RECOGNIZING.equals(action)) {
-        isRecognizing();
         return true;
       }
 
@@ -168,10 +166,6 @@ public class VoiceToTextPlugin extends CordovaPlugin implements RecognitionListe
       return locale;
     }
     return Locale.getDefault().toString();
-  }
-
-  private void isRecognizing() {
-    callbackContext.success(isRecognizing ? 1 : 0);
   }
 
   private void _startListening(final String engine, final String langModel, final String locale, final int matches, 

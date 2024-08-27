@@ -1,6 +1,6 @@
 {
     "name": "cordova-plugin-voicetotext",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "A Cordova plugin for Android that allows users to convert speech to text.",
     "cordova": {
       "id": "cordova-plugin-voicetotext",
