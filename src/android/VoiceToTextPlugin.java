@@ -279,13 +279,13 @@ public class VoiceToTextPlugin extends CordovaPlugin implements RecognitionListe
       if (activity != null) {
         cordova.requestPermission(this, REQUEST_CODE_MIC_PERMISSION, Manifest.permission.RECORD_AUDIO);
         if (_isMicPermissionGranted()) {
-          _startListeningWithPermissions(engine, langModel, lang, matches, prompt, showPartial, showPopup);
+          _startListeningWithPermissions(engine, langModel, lang, matches, prompt, showPartial, showPopup, minSpeechDuration);
         }
       }
       return;
     }
 
-    _startListeningWithPermissions(engine, langModel, lang, matches, prompt, showPartial, showPopup);
+    _startListeningWithPermissions(engine, langModel, lang, matches, prompt, showPartial, showPopup, minSpeechDuration);
   }
 
   private void stopListening() {
