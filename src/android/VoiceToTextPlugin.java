@@ -169,7 +169,7 @@ public class VoiceToTextPlugin extends CordovaPlugin implements RecognitionListe
   }
 
   private void _startListening(final String engine, final String langModel, final String locale, final int matches, 
-    final String prompt, final Boolean showPartial, final Boolean showPopup) {
+    final String prompt, final Boolean showPartial, final Boolean showPopup, final int minSpeechDuration) {
     
     if (recognizer != null) {
       recognizer.destroy();
@@ -207,7 +207,10 @@ public class VoiceToTextPlugin extends CordovaPlugin implements RecognitionListe
 
     intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, matches);
     intent.putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, showPartial);
-    //intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, 1000);
+    intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, minSpeechDuration);
+
+    //I valori per gestire la durata del silenzio viene ignorata da Google anche se è permessa nella documentazione.
+    //È un bug che non fixeranno (https://issuetracker.google.com/issues/36928328)
     //intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_COMPLETE_SILENCE_LENGTH_MILLIS, extras.intValue());
     //intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_POSSIBLY_COMPLETE_SILENCE_LENGTH_MILLIS, extras.intValue());
     
@@ -231,7 +234,7 @@ public class VoiceToTextPlugin extends CordovaPlugin implements RecognitionListe
   }
 
   private void _startListeningWithPermissions(final String engine, final String langModel, final String locale, final int matches, 
-  final String prompt, final Boolean showPartial, final Boolean showPopup) {
+  final String prompt, final Boolean showPartial, final Boolean showPopup, final int minSpeechDuration) {
     
     this.locale = locale;
 
@@ -240,7 +243,7 @@ public class VoiceToTextPlugin extends CordovaPlugin implements RecognitionListe
       @Override
       public void run() {
         try {
-          _startListening(engine, langModel, locale, matches, prompt, showPartial, showPopup);
+          _startListening(engine, langModel, locale, matches, prompt, showPartial, showPopup, minSpeechDuration);
           isRecognizing = true;
 
           // Non viene chiusa la callback
@@ -262,6 +265,7 @@ public class VoiceToTextPlugin extends CordovaPlugin implements RecognitionListe
     String prompt = args.optString(4);
     Boolean showPartial = args.optBoolean(5, false);
     Boolean showPopup = args.optBoolean(6, false);
+    int minSpeechDuration = args.optInt(7, 2000);
 
     if (lang == null || lang.isEmpty() || lang.equals("null")) {
       lang = Locale.getDefault().toString();

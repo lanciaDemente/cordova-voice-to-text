@@ -20,7 +20,8 @@ module.exports = {
       options.matches,
       options.prompt,
       options.showPartial,
-      options.showPopup
+      options.showPopup,
+      options.minSpeechDuration
     ]);
   },
   stopListening: function(successCB, errorCB) {
